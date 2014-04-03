@@ -38,6 +38,8 @@
 			'touchSensitivity': 5,
 			'continuousVertical': false,
 			'animateAnchor': true,
+			'allowScrolling': true,
+			'mouseWheelScrolling': true,
 
 			//events
 			'afterLoad': null,
@@ -138,7 +140,7 @@
 		var lastScrolledDestiny;
 		var lastScrolledSlide;
 
-		$.fn.fullpage.setAllowScrolling(true);
+		$.fn.fullpage.setAllowScrolling(options.allowScrolling);
 		
 		//if css3 is not supported, it will use jQuery animations
 		if(options.css3){
@@ -800,13 +802,15 @@
 
 
 		if(options.normalScrollElements){
-			$(document).on('mouseover', options.normalScrollElements, function () {
-				$.fn.fullpage.setMouseWheelScrolling(false);
-			});
-			
-			$(document).on('mouseout', options.normalScrollElements, function(){
-				$.fn.fullpage.setMouseWheelScrolling(true);
-			});
+			if (options.mouseWheelScrolling) {
+				$(document).on('mouseover', options.normalScrollElements, function () {
+					$.fn.fullpage.setMouseWheelScrolling(false);
+				});
+				
+				$(document).on('mouseout', options.normalScrollElements, function(){
+					$.fn.fullpage.setMouseWheelScrolling(true);
+				});
+			}
 		}
 		
 		/**
