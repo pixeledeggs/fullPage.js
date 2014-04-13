@@ -22,7 +22,7 @@
   ],
   "dependencies": {
       "jquery.slimscroll": "latest",
-      "jQuery": "latest",
+      "jquery": ">=1.8.0",
       "jquery.ui": "latest"
     }
 }
